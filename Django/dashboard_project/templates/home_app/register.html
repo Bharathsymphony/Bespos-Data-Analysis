@@ -1,0 +1,40 @@
+<!-- dashboard/templates/dashboard/register.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'home_app/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Create a New Account</h1>
+        </header>
+        <main>
+            <form method="post" class="register-form">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.as_p }}
+                </div>
+                <button type="submit" class="submit-button">Register</button>
+            </form>
+            {% if messages %}
+                <div class="message-container">
+                    {% for message in messages %}
+                        <div class="message">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <div class="buttons">
+                <a href="{% url 'login' %}" class="button">Back to Login</a>
+            </div>
+        </main>
+        <footer>
+            <p>&copy; 2024 Supermarket Data Analysis</p>
+        </footer>
+    </div>
+</body>
+</html>
